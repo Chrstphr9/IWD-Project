@@ -3,12 +3,16 @@ import Menu from "../assets/Menu.png";
 import search from "../assets/search.png";
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import { getAuth, signOut } from 'firebase/auth'; // Import signOut from 'firebase/auth'
+import { useNavigate } from 'react-router-dom';
 
 const movieSearch = import.meta.env.VITE_MOVIEBOX_SEARCH;
 
 const Navbar = ({ setMovies }) => {
   const [query, setQuery] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth(); // Obtain the auth object
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -27,6 +31,25 @@ const Navbar = ({ setMovies }) => {
       console.log(e);
     }
   }
+
+  // Move signOutUser outside of changeHandler
+  const signOutUser = async () => {
+    const auth = getAuth();
+signOut(auth).then(() => {
+  navigate('/login');
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+    // try {
+    //   await signOut(auth);
+    //   console.log('User signed out');
+    //   navigate('/login');
+    //   // You can also redirect to another page or update the UI as needed
+    // } catch (error) {
+    //   console.error('Error signing out', error.message);
+    // }
+  };
 
   const changeHandler = (e) => {
     setQuery(e.target.value);
@@ -72,7 +95,7 @@ const Navbar = ({ setMovies }) => {
 
         {/* Desktop Sign In */}
         <div className="hidden sm:flex px-4 mr-8 py-2 text-white">
-          <a className="px-3">Sign Out</a>
+          <a className="px-3" onClick={signOutUser}>Sign Out</a>
         </div>
       </div>
     </nav>
