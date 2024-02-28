@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
@@ -47,25 +47,31 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required onChange={e=> setEmail(e.target.value)}/>
+          <input type="email" placeholder="Enetr Your Email" className="input input-bordered" required onChange={e => setEmail(e.target.value)} />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" required onChange={e=> setPassword(e.target.value)} />
+          <input type="password" placeholder="Enter Your Password" className="input input-bordered" required onChange={e => setPassword(e.target.value)} />
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            <Link to="/forgot-password" className="label-text-alt link link-hover">Forgot password?</Link>
           </label>
         </div>
         <div className="form-control mt-6">
           <button type="submit" className="btn btn-primary">Login</button>
           {error && <p className="text-red-500">Something went wrong</p>}
         </div>
+        <div className="text-center mt-4">
+          <p className="text-sm">
+            Don't have an account? <Link to="/signup" className="link link-hover">Sign up here</Link>.
+          </p>
+        </div>
       </form>
     </div>
   </div>
 </div>
+
   )
 }
 
