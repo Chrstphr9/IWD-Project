@@ -88,7 +88,7 @@ signOut(auth).then(() => {
           </button>
           {showMenu && (
             <div className="absolute top-14 right-0 mt-2 bg-white text-black w-40 p-2 rounded-lg shadow-md">
-              <a className="block py-1" href="#">Sign Out</a>
+              <a className="block py-1" onClick={signOutUser} >Sign Out</a>
             </div>
           )}
         </div>
