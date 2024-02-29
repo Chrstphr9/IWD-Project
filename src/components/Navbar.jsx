@@ -95,7 +95,7 @@ signOut(auth).then(() => {
 
         {/* Desktop Sign In */}
         <div className="hidden sm:flex px-4 mr-8 py-2 text-white">
-          <a className="px-3" onClick={signOutUser}>Sign Out</a>
+          <a className=" cursor-pointer px-3" onClick={signOutUser}>Sign Out</a>
         </div>
       </div>
     </nav>
