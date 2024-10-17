@@ -41,14 +41,6 @@ signOut(auth).then(() => {
 }).catch((error) => {
   // An error happened.
 });
-    // try {
-    //   await signOut(auth);
-    //   console.log('User signed out');
-    //   navigate('/login');
-    //   // You can also redirect to another page or update the UI as needed
-    // } catch (error) {
-    //   console.error('Error signing out', error.message);
-    // }
   };
 
   const changeHandler = (e) => {
